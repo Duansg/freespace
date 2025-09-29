@@ -1,12 +1,11 @@
 ---
-setup: |
-  import Layout from '../../layouts/BlogPost.astro'
+layout: ../../layouts/BlogPost.astro
 title: Landing Page
 publishDate: 27 May 2022
 value: 128
 cover: /img/layout.jpg
 description: A starter landing page free download source code astro
-
+prerender: true
 ---
 
 The starter landing page web template built with astro , you can download it for free now on our github repo .

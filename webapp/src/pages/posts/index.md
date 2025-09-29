@@ -1,12 +1,11 @@
 ---
-setup: |
-  import Layout from '../../layouts/BlogPost.astro'
+layout: ../../layouts/BlogPost.astro
 title: Hello Astro!
 publishDate: 29 May 2022
 value: 128
 cover: /img/astronotcss.jpg
 description: Welcome to astronot starter with astro build
-
+prerender: true
 ---
 
 Astro is a new kind of static site builder for the modern web. Powerful developer experience meets lightweight output.

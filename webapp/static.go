@@ -24,8 +24,5 @@ import (
 	_ "embed"
 )
 
-//go:embed public
+//go:embed dist
 var Build embed.FS
-
-//go:embed template
-var Template embed.FS
