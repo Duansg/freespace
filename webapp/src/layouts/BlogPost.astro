@@ -4,18 +4,18 @@ import Nav from '../components/widget/Nav.astro';
 import Foot from '../components/widget/Foot.astro';
 import BlogPost from '../components/BlogPost.astro';
 
-const { content } = Astro.props;
-const { title, description, publishDate,cover , permalink } = content;
+const {title, description, publishDate, cover, permalink} = Astro.props;
 ---
-<html lang={content.lang || 'en'}>
-	<head>
-		<BaseHead {title} {description} {permalink} />
-	</head>
-	<body>
-		<Nav />
-		<div class="wrapper">
-			<BlogPost {title} {cover} {description} {publishDate}>
-				<slot />
-			</BlogPost>
-		</div>
-		<Foot />
+<html lang="en">
+<head>
+    <BaseHead {title} {description} {permalink}/>
+</head>
+<Nav/>
+<body class="astronot">
+<div class="wrapper">
+    <BlogPost {title} {cover} {description} {publishDate}>
+        <slot/>
+    </BlogPost>
+</div>
+<Foot/>
+

@@ -10,7 +10,9 @@
   },
   "devDependencies": {
     "@astrojs/preact": "^1.0.0",
-    "astro": "^5.13.10"
+    "@astrojs/tailwind": "^5.1.2",
+    "astro": "^5.13.10",
+    "tailwindcss": "^3.4.0"
   },
   "dependencies": {
     "@astrojs/node": "^9.4.4",

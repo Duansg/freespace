@@ -1,11 +1,11 @@
 ---
-setup: |
-  import Layout from '../../layouts/BlogPost.astro'
+layout: ../../layouts/BlogPost.astro
 title: Blast Fast
 publishDate: 28 May 2022
 cover: /img/webapp.jpg
 value: 128
 description: Build fast websites, faster.
+prerender: true
 ---
 
 Site performance has a tangible impact on the success of your business. Astro sites can be up to 40% faster and use 90% less JavaScript compared to leading static site generators.

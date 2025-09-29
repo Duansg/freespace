@@ -1,12 +1,11 @@
 ---
-setup: |
-  import Layout from '../../layouts/BlogPost.astro'
+layout: ../../layouts/BlogPost.astro
 title: Astro Boy
 publishDate: 26 May 2022
 value: 128
 cover: /img/astroboy-cover.jpg
 description: Be the Astro Boy free download source code astro
-
+prerender: true
 ---
 
 The starter astro boy web template built with astro , you can download it for free now on our github repo .

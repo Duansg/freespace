@@ -1,12 +1,11 @@
 ---
-setup: |
-  import Layout from '../../layouts/BlogPost.astro'
+layout: ../../layouts/BlogPost.astro
 title: Cute Blog
 publishDate: 26 May 2022
 value: 128
 cover: /img/cuteblog-cover.jpg
 description: Build modern website with cuteblog astro
-
+prerender: true
 ---
 
 The starter cute blog web template built with astro , you can download it for free now on our github repo .
