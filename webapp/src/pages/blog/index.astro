@@ -1,0 +1,67 @@
+---
+import { getCollection } from 'astro:content';
+import FormattedDate from '../../components/FormattedDate.astro';
+import CardBlog from '../../components/CardBlog.astro';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/header/Header.astro';
+import { menuBlog } from '../../components/data/menuData';
+import Footer from '../../components/Footer/Footer.astro';
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Layout title="blog">
+	<Header origin={menuBlog} name="Duansg" />
+	<main class="self-center w-full">
+		<section class="blog__section min-h-[100dvh]">
+			<ul class="blog__elements">
+				{
+					posts.map((post) => (
+						<li>
+							<CardBlog
+								title={post.data.title}
+								content={post.data.description}
+								img={post.data.heroImage}
+								href={`/blog/${post.slug}/`}
+							>
+								<FormattedDate
+									slot="date"
+									clase="text-[--secondary-90] font-bold font-xl"
+									date={post.data.pubDate}
+								/>
+							</CardBlog>
+						</li>
+					))
+				}
+			</ul>
+		</section>
+	</main>
+	<Footer />
+</Layout>
+
+<style>
+	.blog__section {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 0;
+	}
+
+	.blog__elements {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: center;
+		gap: 3rem;
+		justify-content: center;
+		width: 100%;
+		max-width: 1371px;
+	}
+	@media screen and (max-width: 768px) {
+		.blog__section {
+			margin-top: 8rem;
+			padding: 4rem 0;
+			min-height: 100dvh;
+		}
+	}
+</style>

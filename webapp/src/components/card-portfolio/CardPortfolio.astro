@@ -1,0 +1,55 @@
+---
+import './card-portfolio.css';
+const {
+	title,
+	descripcion,
+	imgSrc,
+	skills,
+	repoURL,
+	demoURL,
+	averageBrightness,
+} = Astro.props;
+---
+
+<div class="card__portfolio">
+	<img
+		src={imgSrc}
+		alt={title}
+		crossorigin="anonymous"
+		height={130}
+		width={332}
+		loading="lazy"
+		average-brightness={averageBrightness}
+	/>
+
+	<div class="descripcion__container">
+		<h2 class="card__title">{title}</h2>
+		<div class="descripcion">
+			<p>{descripcion}</p>
+
+			<div class="skills">
+				{
+					skills.map((skill) => (
+						<iconify-icon class="iconify" icon={skill} />
+					))
+				}
+			</div>
+
+			<div class="buttons">
+				<a href={repoURL}>
+					<span>
+						Github
+						{(<iconify-icon icon="quill:link-out" />)}
+					</span>
+				</a>
+
+				<a href={demoURL}>
+					<span>
+						Demo
+						{(<iconify-icon icon="quill:link-out" />)}
+					</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
