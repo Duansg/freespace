@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Oops! Error">
+    <div class="error-container">
+        <h1 class="error-title">😵 Error!!!</h1>
+        <p class="error-message">
+            非常抱歉，发生了意外错误，页面无法加载。
+        </p>
+    </div>
+
+    <style>
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 4rem 2rem;
+            min-height: 60vh;
+            gap: 1.5rem;
+        }
+
+        .error-title {
+            font-size: 3rem;
+            color: #ff4d4f;
+            margin: 0;
+        }
+
+        .error-message {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 400px;
+        }
+
+        .error-container > *:not(:last-child) {
+            margin-bottom: 1rem;
+        }
+    </style>
+</Layout>
