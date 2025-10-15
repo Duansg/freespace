@@ -1,19 +1,19 @@
 ---
-const {name} = Astro.props;
+const { info = { name: "Duansg", img: "/img/jhon-doe.webp" } } = Astro.props;
 ---
 
 <a href="/" class="profile">
     <div class="img__container">
         <img
             class="header__img"
-            src="/img/jhon-doe.webp"
+            src= {info.img}
             alt="sofiDev img"
             width="40px"
             height="40px"
         />
     </div>
     <h3 class="color__gradiente header__title">
-        {name}
+        {info.name}
     </h3>
 </a>
 

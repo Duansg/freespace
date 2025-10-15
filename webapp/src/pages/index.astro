@@ -1,23 +1,35 @@
 ---
 import About from '../components/About/About.astro';
 import BlogHome from '../components/BlogHome.astro';
-import { mainMenu } from '../components/data/menuData';
+import {mainMenu} from '../components/data/menuData';
 import Footer from '../components/Footer/Footer.astro';
 import Header from '../components/header/Header.astro';
 import Hero from '../components/hero/Hero.astro';
 import Portfolio from '../components/Portfolio.astro';
 import Skills from '../components/skills/Skills.astro';
 import Layout from '../layouts/Layout.astro';
+import {getMenu} from '../api/menu.ts';
+let menuArray = [];
+
+try {
+	menuArray = await getMenu(Astro);
+} catch (err) {
+	return new Response(null, {
+		status: 302,
+		headers: { Location: '/error' },
+	});
+}
+const title = import.meta.env.PUBLIC_TITLE
 ---
 
-<Layout title="Duansg | Developer">
-	<Header origin={mainMenu} />
+<Layout title={title}>
+	<Header origin={menuArray}/>
 	<main class="self-center w-full">
-		<Hero />
-		<About />
-		<Skills />
-		<Portfolio />
-		<BlogHome />
+		<Hero/>
+		<!--<About />-->
+		<BlogHome/>
+		<!--<Skills />-->
+		<Portfolio/>
 	</main>
 	<Footer/>
 </Layout>
