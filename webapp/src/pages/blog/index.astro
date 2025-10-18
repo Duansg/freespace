@@ -4,7 +4,6 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import CardBlog from '../../components/CardBlog.astro';
 import Layout from '../../layouts/Layout.astro';
 import Header from '../../components/header/Header.astro';
-import { menuBlog } from '../../components/data/menuData';
 import Footer from '../../components/Footer/Footer.astro';
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -12,7 +11,7 @@ const posts = (await getCollection('blog')).sort(
 ---
 
 <Layout title="blog">
-	<Header origin={menuBlog} name="Duansg" />
+	<Header/>
 	<main class="self-center w-full">
 		<section class="blog__section min-h-[100dvh]">
 			<ul class="blog__elements">

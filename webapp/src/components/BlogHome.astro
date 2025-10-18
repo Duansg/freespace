@@ -1,33 +1,44 @@
 ---
 import Title from "../components/atoms/Title.astro";
-import { getCollection } from 'astro:content';
 import Boton from "./atoms/Boton.astro";
 import FormattedDate from "./FormattedDate.astro";
 import CardBlog from "./CardBlog.astro";
-const posts = (await getCollection('blog')).sort(
-(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
-);
 
+import {getBlogs} from '../api/blog.ts';
+import {Blog} from "../api/blog";
+
+
+let blogs: Blog[] = [];
+
+try {
+    blogs = await getBlogs(Astro, 3)
+} catch (err) {
+    return new Response(null, {
+        status: 302,
+        headers: {Location: '/error'},
+    });
+}
 ---
 
 <section id="blog" class="flex flex-col items-center w-full h-full md:max-w-full  justify-center flex-wrap px-4">
 
-  <Title contenido="Mis artículos" margin="2rem"/>
-  <div class="flex self-center gap-[20px] justify-center min-w-[30rem]  md:max-w-full flex-wrap flex-col md:flex-row">
-    {
-      posts.slice(0, 3).map((post) => (
-        <CardBlog
-        title={post.data.title}
-          content={post.data.description}
-          img={post.data.heroImage}
-          href={`/blog/${post.slug}/`}>
+    <Title contenido="My Article" margin="2rem"/>
+    <div class="flex self-center gap-[20px] justify-center min-w-[30rem]  md:max-w-full flex-wrap flex-col md:flex-row">
+        {
+            blogs.slice(0, 3).map((post) => (
+                    <CardBlog
+                            title={post.title}
+                            content={post.content}
+                            img={post.img}
+                            href={`/blog/${encodeURIComponent(post.id)}`}
+                    >
 
-         <FormattedDate  slot="date" clase="text-white" date={post.data.pubDate}/>
-         </CardBlog>
-      ))
-    }
-  </div>
-  <div class="flex justify-center m-5 max-w-full px-3">
-    <Boton href="/blog" texto="Ver mas"/>
-  </div>
+                        <FormattedDate slot="date" clase="text-white" date={post.pubDate}/>
+                    </CardBlog>
+            ))
+        }
+    </div>
+    <div class="flex justify-center m-5 max-w-full px-3">
+        <Boton href="/blog" texto="Read more"/>
+    </div>
 </section>

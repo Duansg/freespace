@@ -1,0 +1,81 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import {getBlogInfo} from '../../api/blog.ts';
+import {Blog} from "../../api/blog";
+
+const {id} = Astro.params;
+
+let blog: Blog
+
+try {
+    blog = await getBlogInfo(Astro, id)
+} catch (err) {
+    return new Response(null, {
+        status: 302,
+        headers: {Location: '/error'},
+    });
+}
+console.log(blog)
+const {Content} = blog
+
+---
+
+<BlogLayout title={blog.title} pubDate={blog.pubDate} heroImage={blog.img}>
+    <!--<article class="prose">-->
+    <!--   -->
+    <!--</article>-->
+
+    {blog.contentHtml ?? '<p>No content</p>'}
+</BlogLayout>
+
+<style is:global>
+    p {
+        font-size: 1.8rem;
+    }
+
+    p:has(> img) {
+        display: flex;
+        justify-content: center;
+    }
+
+    p > img {
+        width: 100%;
+        max-width: 80rem;
+        min-width: 27rem;
+    }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: white;
+        font-weight: 700;
+        margin: 2rem 0;
+    }
+
+    h2 {
+        font-size: var(--text-xx-large);
+    }
+
+    h3 {
+        font-size: var(--text-x-large);
+    }
+
+    h4 {
+        font-size: var(--text-large);
+    }
+
+    pre {
+        font-size: 1.8rem;
+        padding: 1rem;
+        margin: 3rem 0;
+        border-radius: 0.5rem;
+    }
+
+    @media screen and (max-width: 768px) {
+        h2 {
+            font-size: 2rem;
+        }
+    }
+</style>
