@@ -1,42 +1,39 @@
 ---
-
-import type { CollectionEntry } from "astro:content";
 import FormattedDate from "../components/FormattedDate.astro";
 import Header from "../components/header/Header.astro";
-import {  menuBlog } from "../components/data/menuData";
-const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
-type Props = CollectionEntry<"blog">["data"];
+const {title, description, pubDate, updatedDate, heroImage} = Astro.props;
 import "../styles/global.css"
 import Footer from "../components/Footer/Footer.astro";
 ---
 
 <!doctype html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="../../img/jhon-doe.webp" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
-		<link rel="preconnect" href="https://fonts.googleapis.com" />
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="description" content="Astro description"/>
+    <meta name="viewport" content="width=device-width"/>
+    <link rel="icon" type="image/svg+xml" href="../../img/jhon-doe.webp"/>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg"/>
+    <meta name="generator" content={Astro.generator}/>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
 
     <title> {title}</title>
-  </head>
-  <body>
-    <Header  origin={menuBlog} name="Duansg"/>
-    <main class="w-full flex flex-col justify-center  items-center pt-[13rem]" >
-      <div class="text-center" >
-        <h1 class="text-4xl text-center font-extrabold color__gradiente mb-3" >{title}</h1>
-        <FormattedDate date={pubDate} clase="text-white text-2xl  " />
-      </div>
-      <section class="flex flex-col md:max-w-[57%]  max-w-[100%] min-w-[30rem]  px-5 pt-10 pb-[3rem] justify-center w-[80%">
-        <slot />
-      </section>
-    </main>
-    <Footer/>
-  </body>
+</head>
+<body>
+<Header/>
+<main class="w-full flex flex-col justify-center  items-center pt-[13rem]">
+    <div class="text-center">
+        <h1 class="text-4xl text-center font-extrabold color__gradiente mb-3">{title}</h1>
+        <FormattedDate date={pubDate} clase="text-white text-2xl  "/>
+    </div>
+    <section
+            class="flex flex-col md:max-w-[57%]  max-w-[100%] min-w-[30rem]  px-5 pt-10 pb-[3rem] justify-center w-[80%">
+        <slot/>
+    </section>
+</main>
+<Footer/>
+</body>
 </html>
