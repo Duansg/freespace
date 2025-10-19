@@ -15,8 +15,10 @@
     "@astrojs/sitemap": "^3.1.4",
     "@astrojs/tailwind": "^5.1.0",
     "astro": "^4.16.19",
+    "marked": "^16.4.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "sanitize-html": "^2.17.0",
     "tailwindcss": "^3.4.3"
   },
   "main": "index.astro",
