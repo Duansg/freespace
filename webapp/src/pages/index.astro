@@ -8,22 +8,12 @@ import Hero from '../components/hero/Hero.astro';
 import Portfolio from '../components/Portfolio.astro';
 import Skills from '../components/skills/Skills.astro';
 import Layout from '../layouts/Layout.astro';
-import {getMenu} from '../api/menu.ts';
-let menuArray = [];
 
-try {
-	menuArray = await getMenu(Astro);
-} catch (err) {
-	return new Response(null, {
-		status: 302,
-		headers: { Location: '/error' },
-	});
-}
 const title = import.meta.env.PUBLIC_TITLE
 ---
 
 <Layout title={title}>
-	<Header origin={menuArray}/>
+	<Header/>
 	<main class="self-center w-full">
 		<Hero/>
 		<!--<About />-->
