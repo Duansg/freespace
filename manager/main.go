@@ -22,6 +22,8 @@ package main
 import freespacecmd "github.com/Duansg/freespace/manager/cmd"
 
 // @name Duansg
+// @email duansg@apache.org
+// @link https://github.com/Duansg/freespace
 func main() {
 	freespacecmd.Main()
 }
