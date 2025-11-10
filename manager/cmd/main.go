@@ -32,8 +32,7 @@ func Main() {
 }
 
 func runApp() {
-	configPath := cli.GetConfigFilePath()
-	c, err := conf.ReadConfig(configPath)
+	c, err := conf.ReadConfig(cli.GetConfigFilePath())
 	if err != nil {
 		panic(err)
 	}
